@@ -3,8 +3,7 @@ The Contact Management System allows users to add, view, update, and delete cont
 
 # Setup Instructions
 ## Clone the Repository:
-* git clone <repository-url>
-
+* git clone repository-url
 ## Install the dependencies:
 * npm install
 
