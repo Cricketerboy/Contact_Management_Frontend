@@ -7,7 +7,7 @@ The Contact Management System allows users to add, view, update, and delete cont
 ## Install the dependencies:
 * npm install
 
-## Run the server
+## Run Command:
 * npm start
 
 
