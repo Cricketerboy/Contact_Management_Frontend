@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/api/contacts";
+const API_URL = "https://contact-management-backend-r98y.onrender.com/api/contacts";
 
 export const fetchContacts = async () => {
   const response = await axios.get(API_URL);

@@ -37,7 +37,16 @@ const ContactForm = ({ onSubmit, selectedContact, onCancel }) => {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit}>
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{
+        backgroundColor: "#fff",
+        borderRadius: 2,
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+        p: 3,
+      }}
+    >
       <TextField
         fullWidth
         label="First Name"
@@ -90,9 +99,17 @@ const ContactForm = ({ onSubmit, selectedContact, onCancel }) => {
         onChange={handleChange}
         margin="normal"
       />
-      <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }}>
-        {selectedContact ? "Update Contact" : "Add Contact"}
-      </Button>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mt: 2,
+        }}
+      >
+        <Button type="submit" variant="contained" color="primary">
+          {selectedContact ? "Update Contact" : "Add Contact"}
+        </Button>
+      </Box>
       {selectedContact && (
         <Button onClick={onCancel} sx={{ mt: 2, ml: 2 }}>
           Cancel

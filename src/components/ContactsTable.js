@@ -7,6 +7,8 @@ import {
   TableBody,
   Button,
   TablePagination,
+  Paper,
+  TableContainer,
 } from "@mui/material";
 
 const ContactsTable = ({ contacts, onEdit, onDelete }) => {
@@ -22,31 +24,67 @@ const ContactsTable = ({ contacts, onEdit, onDelete }) => {
   );
 
   return (
-    <>
+    <TableContainer
+    component={Paper}
+    elevation={3}
+    sx={{
+      mt: 2,
+      borderRadius: 2,
+      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+      overflow: "hidden",
+      }}
+    >
       <Table>
-        <TableHead>
+        <TableHead sx={{ backgroundColor: "#f5f5f5" }}>
           <TableRow>
             {["First Name", "Last Name", "Email", "Phone", "Company", "Job Title", "Actions"].map(
               (header) => (
-                <TableCell key={header}>{header}</TableCell>
+                <TableCell
+                  key={header}
+                  sx={{
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    borderRight: "1px solid #ddd",
+                  }}
+                >
+                  {header}
+                </TableCell>
               )
             )}
           </TableRow>
         </TableHead>
         <TableBody>
           {paginatedContacts.map((contact) => (
-            <TableRow key={contact._id}>
-              <TableCell>{contact.firstname}</TableCell>
-              <TableCell>{contact.lastname}</TableCell>
-              <TableCell>{contact.email}</TableCell>
-              <TableCell>{contact.phone}</TableCell>
-              <TableCell>{contact.company}</TableCell>
-              <TableCell>{contact.jobTitle}</TableCell>
-              <TableCell>
+            <TableRow
+              key={contact._id}
+              sx={{
+                "&:nth-of-type(odd)": { backgroundColor: "#f9f9f9" },
+                "&:hover": { backgroundColor: "#f1f1f1" },
+              }}
+            >
+              <TableCell sx={{ textAlign: "center", borderRight: "1px solid #ddd" }}>
+                {contact.firstname}
+              </TableCell>
+              <TableCell sx={{ textAlign: "center", borderRight: "1px solid #ddd" }}>
+                {contact.lastname}
+              </TableCell>
+              <TableCell sx={{ textAlign: "center", borderRight: "1px solid #ddd" }}>
+                {contact.email}
+              </TableCell>
+              <TableCell sx={{ textAlign: "center", borderRight: "1px solid #ddd" }}>
+                {contact.phone}
+              </TableCell>
+              <TableCell sx={{ textAlign: "center", borderRight: "1px solid #ddd" }}>
+                {contact.company}
+              </TableCell>
+              <TableCell sx={{ textAlign: "center", borderRight: "1px solid #ddd" }}>
+                {contact.jobTitle}
+              </TableCell>
+              <TableCell sx={{ textAlign: "center" }}>
                 <Button onClick={() => onEdit(contact)} color="primary">
                   Edit
                 </Button>
-                <Button onClick={() => onDelete(contact._id)} color="secondary">
+                <Button onClick={() => onDelete(contact._id)} color="error">
                   Delete
                 </Button>
               </TableCell>
@@ -63,7 +101,7 @@ const ContactsTable = ({ contacts, onEdit, onDelete }) => {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-    </>
+    </TableContainer>
   );
 };
 
